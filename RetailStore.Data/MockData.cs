@@ -1,6 +1,6 @@
 ﻿using RetailStore.Core.Entity;
-using System; 
-using Collections.Generic;
+using System;  
+using System.Collections.Generic;
 
 namespace RetailStore.Data
 {
