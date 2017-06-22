@@ -6,7 +6,8 @@ using System.Threading.Tasks;
 
 namespace RetailStore.Core.Entity.Foundation
 {
-    class IEntity
+    public interface IEntity
     {
+        int ID { get; set; }
     }
 }
