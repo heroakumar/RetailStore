@@ -42,7 +42,7 @@ namespace RetailStore.Services
             return new DiscountModel
             {
                 PercentileDiscount = totalPercentileDiscount,
-                TotalAmountDiscount = discountOnEachHundred
+                VolumeDiscount = discountOnEachHundred
             };
 
         }

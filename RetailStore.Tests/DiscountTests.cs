@@ -28,10 +28,13 @@ namespace RetailStore.Tests
             products = productRepository.Get();
 
             userRepository = new UserRepository();
+
             employee = userRepository.GetByRole(Role.EMPLOYEE).FirstOrDefault();
             affilate = userRepository.GetByRole(Role.AFFILATE).FirstOrDefault();
             var customers = userRepository.GetByRole(Role.CUSTOMER);
+
             customerNew = customers.FirstOrDefault(x => (DateTime.Now.Year - x.CreateDate.Year) < DiscountSettingHelper.LoyaltyEligibilityYear);
+
             customerOld = customers.FirstOrDefault(x => (DateTime.Now.Year - x.CreateDate.Year) >= DiscountSettingHelper.LoyaltyEligibilityYear);
 
         } 
@@ -41,7 +44,7 @@ namespace RetailStore.Tests
         {
             var discount = discountService.CalculateDiscount(employee, products);
             Assert.Equal(30, discount.PercentileDiscount);
-            Assert.Equal(635, discount.TotalAmountDiscount);
+            Assert.Equal(635, discount.VolumeDiscount);
         }
 
         [Fact]
@@ -49,7 +52,7 @@ namespace RetailStore.Tests
         {
             var discount = discountService.CalculateDiscount(affilate, products);
             Assert.Equal(10, discount.PercentileDiscount);
-            Assert.Equal(635, discount.TotalAmountDiscount);
+            Assert.Equal(635, discount.VolumeDiscount);
         }
 
         [Fact]
@@ -57,7 +60,7 @@ namespace RetailStore.Tests
         {
             var discount = discountService.CalculateDiscount(customerNew, products);
             Assert.Equal(0, discount.PercentileDiscount);
-            Assert.Equal(635, discount.TotalAmountDiscount);
+            Assert.Equal(635, discount.VolumeDiscount);
         }
 
         [Fact]
@@ -65,7 +68,7 @@ namespace RetailStore.Tests
         {
             var discount = discountService.CalculateDiscount(customerOld, products);
             Assert.Equal(5, discount.PercentileDiscount);
-            Assert.Equal(635, discount.TotalAmountDiscount);
+            Assert.Equal(635, discount.VolumeDiscount);
         }
     }
 
