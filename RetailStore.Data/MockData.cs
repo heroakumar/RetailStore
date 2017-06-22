@@ -1,6 +1,6 @@
 ﻿using RetailStore.Core.Entity;
 using System; 
-using System.Collections.Generic;
+using Collections.Generic;
 
 namespace RetailStore.Data
 {
@@ -16,6 +16,7 @@ namespace RetailStore.Data
         public List<Product> Products { get; set; }
         public List<User> Users { get; set; }
 
+
         private List<Product> GetProducts()
         {
             List<Product> products = new List<Product>
@@ -25,46 +26,35 @@ namespace RetailStore.Data
                     Name = "Samsung Mobile",
                     Price = 10000,
                     Quantity = 1,
-                    Category = new Category
-                    {
-                       Name=  "Electronics"
-                    }
+                    Category = Category.ELECTRONICS
                 },
 
                 new Product
                 {
                     Name = "Polo Tshirt",
                     Price = 600,
-                    Quantity = 1, 
-                    Category = new Category
-                    {
-                       Name=  "Clothing"
-                    }
+                    Quantity = 1,
+                    Category = Category.CLOTHINGS
                 },
 
                 new Product
                 {
                     Name = "Jeans",
                     Price = 2000,
-                    Quantity = 1, 
-                    Category = new Category
-                    {
-                       Name=  "Clothing"
-                    }
+                    Quantity = 1,
+                    Category =Category.CLOTHINGS
                 },
                 new Product
                 {
                     Name = "Rice",
                     Price = 100,
                     Quantity = 1,
-                    Category = new Category
-                    {
-                       Name=  "Grocery"
-                    }
+                    Category = Category.GROCERY
                 }
             };
             return products;
         }
+
 
         private List<User> GetUsers()
         {
@@ -77,10 +67,7 @@ namespace RetailStore.Data
                     LastName = "Test",
                     CreateDate = new DateTime(2015, 1, 1),
                     Email = "testcustomer1@retailstore.com",
-                    Role = new Role
-                    {
-                       Name=  "Customer"
-                    }
+                    Role = Role.CUSTOMER
                 },
 
                 new User
@@ -90,10 +77,7 @@ namespace RetailStore.Data
                     LastName = "Test",
                     CreateDate = new DateTime(2017, 1, 1),
                     Email = "testcustomer2@retailstore.com",
-                    Role = new Role
-                    {
-                        Name="Customer"
-                    }
+                    Role = Role.CUSTOMER
                 },
                 new User
                 {
@@ -102,10 +86,7 @@ namespace RetailStore.Data
                     LastName = "Test",
                     CreateDate = new DateTime(2017, 1, 1),
                     Email = "testcustomer3@retailstore.com",
-                    Role = new Role
-                    {
-                        Name="Affilate"
-                    }
+                    Role = Role.AFFILATE
                 },
                 new User
                 {
@@ -114,13 +95,11 @@ namespace RetailStore.Data
                     LastName = "Test",
                     CreateDate = new DateTime(2017, 1, 1),
                     Email = "testcustomer4@retailstore.com",
-                    Role = new Role
-                    {
-                        Name="Employee"
-                    }
+                    Role = Role.EMPLOYEE
                 },
             };
             return users;
         }
+
     }
 }
