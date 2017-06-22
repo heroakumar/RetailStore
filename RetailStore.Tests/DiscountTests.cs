@@ -48,7 +48,7 @@ namespace RetailStore.Tests
         }
 
         [Fact]
-        public void ShouldApply30PercentsDiscountForAffilate()
+        public void ShouldApply10PercentsDiscountForAffilate()
         {
             var discount = discountService.CalculateDiscount(affilate, products);
             Assert.Equal(10, discount.PercentileDiscount);
