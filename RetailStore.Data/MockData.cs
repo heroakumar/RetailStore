@@ -4,9 +4,9 @@ using System.Collections.Generic;
 
 namespace RetailStore.Data
 {
-    public class Data
+    public class MockData
     {
-        public Data()
+        public MockData()
         {
             Products = GetProducts();
             Users = GetUsers();
