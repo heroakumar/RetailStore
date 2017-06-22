@@ -6,7 +6,13 @@ using System.Threading.Tasks;
 
 namespace RetailStore.Core.Entity
 {
-    class Role
+    public class Role
     {
+         
+        public string Name { get; set; }
+        public string RoleDesc { get; set; }
+        public List<User> Users { get; set; }
+ 
     }
+
 }
