@@ -35,6 +35,7 @@ Test Duration:	0:00:00.001
 
 
 Test Case : For Employee there will be 30 percentage discount and if user bill amount is greater than 100$ there will be 5$ flat discount on each 100 multiplication amount.
+
 Test Name:	RetailStore.Tests.DiscountTests.ShouldApply30PercentsDiscountForEmployee
 Test FullName:	RetailStore.Tests.DiscountTests.ShouldApply30PercentsDiscountForEmployee
 Test Source:	D:\RetailStore\RetailStore.Tests\DiscountTests.cs : line 44
@@ -43,6 +44,7 @@ Test Duration:	0:00:00.001
 
 
 Test Case : For new customer there will not be any percentage discount only volume discount is there, if user bill amount is greater than 100$ there will be 5$ flat discount on each 100 multiplication amount.
+
 Test Name:	RetailStore.Tests.DiscountTests.ShouldApplyOnlyVolumeDiscountForCustomerNew
 Test FullName:	RetailStore.Tests.DiscountTests.ShouldApplyOnlyVolumeDiscountForCustomerNew
 Test Source:	D:\RetailStore\RetailStore.Tests\DiscountTests.cs : line 60
@@ -51,11 +53,14 @@ Test Duration:	0:00:00.049
 
 
 Test Case : For old customer there will be 10 percentage discount and if user bill amount is greater than 100$ there will be 5$ flat discount on each 100 multiplication amount.
+
 Test Name:	RetailStore.Tests.DiscountTests.ShouldApply5PercentsDiscountForCustomerOld
 Test FullName:	RetailStore.Tests.DiscountTests.ShouldApply5PercentsDiscountForCustomerOld
 Test Source:	D:\RetailStore\RetailStore.Tests\DiscountTests.cs : line 68
 Test Outcome:	Passed
 Test Duration:	0:00:00.001
+
+Test report can be seen in test exporer of visual studio. 
 
 # Flat Discount 
 flat discount is calculate on total amount of bill without percentile discount deduction.
