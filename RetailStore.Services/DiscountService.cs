@@ -12,9 +12,9 @@ namespace RetailStore.Services
         public DiscountModel CalculateDiscount(User user, List<Product> products)
         {
             decimal discountPercentage = 0;
-            
+
             //user is an employee of the store, he gets a 30% discount 
-            
+
             if (user.Role == Role.EMPLOYEE)
             {
                 discountPercentage = DiscountSettingHelper.EmployeeDiscount;
@@ -32,7 +32,7 @@ namespace RetailStore.Services
 
             //Total Percentage discount
             var productTotalExceptGrocery = products.Where(p => p.Category == Category.GROCERY);
-            decimal totalPercentileDiscount = (discountPercentage / 100) * productTotalExceptGrocery.Sum(x => x.Price);
+            decimal totalPercentileDiscount = discountPercentage > 0 ? (discountPercentage / 100) * productTotalExceptGrocery.Sum(x => x.Price) : 0;
 
 
             //For every $100 on the bill, there would be a $ 5 discount (e.g. for $ 990, you get $ 45 as a discount). 
@@ -49,7 +49,7 @@ namespace RetailStore.Services
 
         public static bool IsUserEllgibleForLoyaltyDiscount(User user)
         {
-            return (user.CreateDate.Year - DateTime.Now.Year) > DiscountSettingHelper.LoyaltyEligibilityYear;
+            return (DateTime.Now.Year-user.CreateDate.Year) >= DiscountSettingHelper.LoyaltyEligibilityYear;
         }
     }
 

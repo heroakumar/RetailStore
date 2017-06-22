@@ -1,9 +1,5 @@
 ﻿using RetailStore.Core.Entity;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace RetailStore.Data.Repositories
 {
@@ -19,7 +15,12 @@ namespace RetailStore.Data.Repositories
         public User GetByID(int id)
         {
             return data.Users.Find(m => m.ID == id);
-        } 
+        }
+
+        public List<User> GetByRole(Role role)
+        {
+            return data.Users.FindAll(m => m.Role == role);
+        }
 
         public void Insert(User obj)
         {
