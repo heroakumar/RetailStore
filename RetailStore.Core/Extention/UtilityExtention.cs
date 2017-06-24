@@ -1,4 +1,4 @@
-﻿using RetailStore.Core.Entity;
+﻿using RetailStore.Core.Entity; 
 using System;
 
 namespace RetailStore.Core.Extention
@@ -7,7 +7,7 @@ namespace RetailStore.Core.Extention
     {
         public static bool IsUserEllgibleForLoyaltyDiscount(this User user)
         {
-            return (user.CreateDate.Year - DateTime.Now.Year) > 2;
+            return (DateTime.Now.Year - user.CreateDate.Year) >= DiscountSettingHelper.LoyaltyEligibilityYear;
         }
     }
 }
