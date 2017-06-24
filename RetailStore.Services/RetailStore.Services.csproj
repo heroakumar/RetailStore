@@ -41,9 +41,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DiscountService.cs" />
-    <Compile Include="DiscountSettingHelper.cs" />
-    <Compile Include="IDiscountService.cs" />
+    <Compile Include="Discount\AffilateDiscount.cs" />
+    <Compile Include="Discount\CustomerDiscount.cs" />
+    <Compile Include="Resolver\DiscountServiceResolver.cs" />
+    <Compile Include="Discount\DiscountService.cs" />
+    <Compile Include="Discount\EmployeeDiscount.cs" />
+    <Compile Include="Discount\IDiscountService.cs" />
+    <Compile Include="Discount\VolumeDiscount.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

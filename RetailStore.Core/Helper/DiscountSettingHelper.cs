@@ -1,6 +1,6 @@
 ﻿using System.Configuration;
 
-namespace RetailStore.Services
+namespace RetailStore.Core
 {
     public static class DiscountSettingHelper
     {

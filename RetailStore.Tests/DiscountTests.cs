@@ -1,7 +1,9 @@
-﻿using RetailStore.Core.Entity;
+﻿using RetailStore.Core;
+using RetailStore.Core.Entity;
 using RetailStore.Data;
 using RetailStore.Data.Repositories;
-using RetailStore.Services;
+using RetailStore.Services.Discount;
+using RetailStore.Services.Resolver;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,8 +12,7 @@ using Xunit;
 namespace RetailStore.Tests
 {
     public class DiscountTests
-    {
-        IDiscountService discountService;
+    { 
         IProductRepository productRepository;
         IUserRepository userRepository;
         User employee;
@@ -22,8 +23,7 @@ namespace RetailStore.Tests
 
         public DiscountTests()
         {
-            discountService = new DiscountService();
-            productRepository = new ProductRepository();
+           productRepository = new ProductRepository();
 
             products = productRepository.Get();
 
@@ -36,40 +36,45 @@ namespace RetailStore.Tests
             customerNew = customers.FirstOrDefault(x => (DateTime.Now.Year - x.CreateDate.Year) < DiscountSettingHelper.LoyaltyEligibilityYear);
 
             customerOld = customers.FirstOrDefault(x => (DateTime.Now.Year - x.CreateDate.Year) >= DiscountSettingHelper.LoyaltyEligibilityYear);
+        }
 
-        } 
+
+
 
         [Fact]
         public void ShouldApply30PercentsDiscountForEmployee()
         {
-            var discount = discountService.CalculateDiscount(employee, products);
-            Assert.Equal(30, discount.PercentileDiscount);
-            Assert.Equal(635, discount.VolumeDiscount);
+            //When the user will login role of user will be passed to resolver to get applicable discounts
+            var discountservices = DiscountServiceResolver.DiscountServices(employee); 
+            var discount = new DiscountService(discountservices).GetTotalDiscount(products);
+            Assert.Equal(4415, discount); 
         }
 
         [Fact]
         public void ShouldApply10PercentsDiscountForAffilate()
         {
-            var discount = discountService.CalculateDiscount(affilate, products);
-            Assert.Equal(10, discount.PercentileDiscount);
-            Assert.Equal(635, discount.VolumeDiscount);
+            //When the user will login role of user will be passed to resolver to get applicable discounts
+            var discountservices = DiscountServiceResolver.DiscountServices(affilate);
+            var discount = new DiscountService(discountservices).GetTotalDiscount(products);
+            Assert.Equal(1895, discount); 
         }
 
         [Fact]
         public void ShouldApplyOnlyVolumeDiscountForCustomerNew()
         {
-            var discount = discountService.CalculateDiscount(customerNew, products);
-            Assert.Equal(0, discount.PercentileDiscount);
-            Assert.Equal(635, discount.VolumeDiscount);
+            //When the user will login role of user will be passed to resolver to get applicable discounts
+            var discountservices = DiscountServiceResolver.DiscountServices(customerNew);
+            var discount = new DiscountService(discountservices).GetTotalDiscount(products);  
+            Assert.Equal(635, discount);
         }
 
         [Fact]
         public void ShouldApply5PercentsDiscountForCustomerOld()
         {
-            var discount = discountService.CalculateDiscount(customerOld, products);
-            Assert.Equal(5, discount.PercentileDiscount);
-            Assert.Equal(635, discount.VolumeDiscount);
+            //When the user will login role of user will be passed to resolver to get applicable discounts
+            var discountservices = DiscountServiceResolver.DiscountServices(customerOld);
+            var discount = new DiscountService(discountservices).GetTotalDiscount(products);
+            Assert.Equal(1265, discount);
         }
-    }
-
+    } 
 }

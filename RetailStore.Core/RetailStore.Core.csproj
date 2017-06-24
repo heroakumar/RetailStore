@@ -32,6 +32,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -48,6 +49,7 @@
     <Compile Include="Entity\Role.cs" />
     <Compile Include="Entity\User.cs" />
     <Compile Include="Extention\UtilityExtention.cs" />
+    <Compile Include="Helper\DiscountSettingHelper.cs" />
     <Compile Include="Model\DiscountModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
